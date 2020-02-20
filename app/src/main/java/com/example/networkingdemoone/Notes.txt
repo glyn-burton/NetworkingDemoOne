@@ -1,0 +1,58 @@
+Networking and Android
+    Network calls from main thread are NOT allowed!!
+    ALL INTERNET APPS MUST USE THE INTERNET SYSTEM PERMISSION
+    Generally, we use the network to request data for online sources
+    or to send data to an online source
+        this act is generally referred to as "Consuming API Calls"
+    In Android we have a few common libraries to achieve Network Calls
+        JAVA Native
+            HttpURLConnection
+            First must instantiate the URL Object
+            Then open a HttpURLConnection using the URL object
+            Buffer through the result form connection
+            Close connection
+            You Must define a threading scheme
+        Third Party Libs.
+            Retrofit
+                Uses a OkHttp3 client
+                Uses interface with Call object returns
+                Interface are annotated with the proper Http Verb that interface is for
+                Has built in (from okhttp3) Sync and Async capabilities
+                    Sync function  = execution()
+                    Async function = enqueue()
+                Uses a Converter factory to convert results to objects
+                Uses a Call factory adapter to interact with SOME threading schemes more seamlessly
+                    RxJava
+                    Coroutines
+                Most commonly used when third parties are allowed
+            Okhttp (current version = 3, OkHttp3)
+                    Sync function  = execution()
+                    Async function = enqueue()
+            Volley
+                A httpurlconnection client
+        Not used a lot
+            Spring Boot
+    REST vs SOAP
+        SOAP
+            Older
+            Only returns XMLs
+            Protocol based
+            Slower
+            kSoap was the common lib used for SOAP in android
+
+        REST
+            Newer
+            Returns many formats
+            Faster
+
+    JSON
+        Most returns nowadays are using JSON formats for results
+        JAVA SCRIPT OBJECT NOTATION
+        Parse responses formatted intoa Json into Objects (POJO or DATA class)
+            2 Methods
+                Java Native
+                    JSON Parser
+                Google way
+                    GSON Parser
+                        Google JSON Parser
+
